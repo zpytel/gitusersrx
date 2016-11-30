@@ -1,3 +1,15 @@
-<p>
-  app works!
-</p>
+<bc-layout>
+      <bc-sidenav [open]="true">
+        <bc-nav-item (activate)="closeSidenav()" routerLink="/" icon="book" hint="View your book collection">
+          My Collection
+        </bc-nav-item>
+        <bc-nav-item (activate)="closeSidenav()" routerLink="/book/find" icon="search" hint="Find your next book!">
+          Browse User
+        </bc-nav-item>
+      </bc-sidenav>
+      <bc-toolbar (openMenu)="openSidenav()">
+        User Collection
+      </bc-toolbar>
+
+      <router-outlet></router-outlet>
+</bc-layout>
