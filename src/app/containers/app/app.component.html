@@ -1,15 +1,15 @@
-<bc-layout>
-      <bc-sidenav [open]="true">
-        <bc-nav-item (activate)="closeSidenav()" routerLink="/" icon="book" hint="View your book collection">
+<app-layout>
+      <app-sidenav [open]="$showSidenav|async">
+        <app-nav-item (activate)="closeSidenav()" routerLink="/" icon="book" hint="View your book collection">
           My Collection
-        </bc-nav-item>
-        <bc-nav-item (activate)="closeSidenav()" routerLink="/book/find" icon="search" hint="Find your next book!">
+        </app-nav-item>
+        <app-nav-item (activate)="closeSidenav()" routerLink="/book/find" icon="search" hint="Find your next book!">
           Browse User
-        </bc-nav-item>
-      </bc-sidenav>
-      <bc-toolbar (openMenu)="openSidenav()">
+        </app-nav-item>
+      </app-sidenav>
+      <app-toolbar (openMenu)="openSidenav()">
         User Collection
-      </bc-toolbar>
+      </app-toolbar>
 
       <router-outlet></router-outlet>
-</bc-layout>
+</app-layout>

@@ -4,6 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { DBModule } from '@ngrx/db';
+import { RouterStoreModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 
@@ -14,7 +19,10 @@ import { CollectionPageComponent } from './containers/collection-page/collection
 import { NotFoundPageComponent } from './containers/not-found-page/not-found-page.component';
 import {SelectUserPageComponent} from './containers/select-user-page/select-user-page.component';
 import {routes} from './routes'
-import {UserExistsGuard} from './guards/user-exist.guard'
+import {reducer} from './reducers'
+import {UserExistsGuard} from './guards/user-exist.guard';
+
+import { ComponentsModule } from './components'
 
 @NgModule({
   declarations: [
@@ -24,13 +32,19 @@ import {UserExistsGuard} from './guards/user-exist.guard'
     CollectionPageComponent,
     NotFoundPageComponent,
     SelectUserPageComponent
+   
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ComponentsModule,
     MaterialModule.forRoot(),
-    RouterModule.forRoot(routes, { useHash: true })
+    RouterModule.forRoot(routes, { useHash: true }),
+    StoreModule.provideStore(reducer),
+    RouterStoreModule.connectRouter(),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+
   ],
   providers: [UserExistsGuard],
   bootstrap: [AppComponent]

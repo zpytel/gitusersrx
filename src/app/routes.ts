@@ -5,6 +5,7 @@ import { CollectionPageComponent } from './containers/collection-page/collection
 import { NotFoundPageComponent } from './containers/not-found-page/not-found-page.component';
 import {SelectUserPageComponent} from './containers/select-user-page/select-user-page.component';
 import {UserExistsGuard} from './guards/user-exist.guard'
+
 export const routes: Routes = [
   {
     path: '',
