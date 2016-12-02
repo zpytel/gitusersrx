@@ -18,11 +18,14 @@ import {ViewUserPageComponent} from './containers/view-user-page/view-user-page.
 import { CollectionPageComponent } from './containers/collection-page/collection-page.component';
 import { NotFoundPageComponent } from './containers/not-found-page/not-found-page.component';
 import {SelectUserPageComponent} from './containers/select-user-page/select-user-page.component';
+import { TestControlsComponent } from './containers/test-controls-page/test-controls.component';
 import {routes} from './routes'
 import {reducer} from './reducers'
 import {UserExistsGuard} from './guards/user-exist.guard';
 
-import { ComponentsModule } from './components'
+import { ComponentsModule } from './components';
+
+
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { ComponentsModule } from './components'
     ViewUserPageComponent,
     CollectionPageComponent,
     NotFoundPageComponent,
-    SelectUserPageComponent
+    SelectUserPageComponent,
+    TestControlsComponent
+   
    
   ],
   imports: [

@@ -1,0 +1,8 @@
+ md-card-title,
+    md-card-content {
+      display: flex;
+      justify-content: center;
+    }
+md-list-item.selected{
+    color:red;
+}

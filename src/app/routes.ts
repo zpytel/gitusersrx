@@ -5,11 +5,16 @@ import { CollectionPageComponent } from './containers/collection-page/collection
 import { NotFoundPageComponent } from './containers/not-found-page/not-found-page.component';
 import {SelectUserPageComponent} from './containers/select-user-page/select-user-page.component';
 import {UserExistsGuard} from './guards/user-exist.guard'
+import {TestControlsComponent} from './containers/test-controls-page/test-controls.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: CollectionPageComponent
+  },
+  {
+   path:'cars',
+   component:TestControlsComponent
   },
   {
     path: 'book/find',

@@ -1,0 +1,10 @@
+ <md-card>
+      <md-card-title>Select Car</md-card-title>
+      <md-card-content>
+      <md-list class="app-list">
+        <md-list-item *ngFor="let item of items" (click)="selectedItem(item)" [class.selected]="item==='corolla'">
+          {{item}}
+        </md-list-item>
+      </md-list>
+      </md-card-content>
+</md-card>
