@@ -11,15 +11,18 @@ import { combineReducers } from '@ngrx/store';
 
 
 import * as fromLayout from './layout.reducer'
+import * as fromCar from './car.reducer'
 
 export interface State{
     layout:fromLayout.State,
-    router:fromRouter.RouterState
+    router:fromRouter.RouterState,
+    car:fromCar.State
 }
 
 const reducers={
  layout:fromLayout.reducer,
- router:fromRouter.routerReducer
+ router:fromRouter.routerReducer,
+ car:fromCar.reducer
 
 };
 
@@ -38,3 +41,7 @@ export function reducer(state: any, action: any) {
 export const getLayoutState=(state:State)=>state.layout;
 
 export const getShowSidenav=createSelector(getLayoutState,fromLayout.getShowSidenav)
+
+export const getCarState=(state:State)=>state.car;
+export const getCars=createSelector(getCarState,fromCar.getAll)
+export const getSelectedCar=createSelector(getCarState,fromCar.getSelected)

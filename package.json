@@ -4,10 +4,11 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve",
+    "start": "concurrently \"ng serve --proxy-config proxy.conf.json\"  \"npm run api\" ",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
+    "api": "json-server  --watch server/api/db.json --routes server/api/routes.json",
     "e2e": "protractor"
   },
   "private": true,
@@ -27,7 +28,9 @@
     "@ngrx/router-store": "^1.1.0",
     "@ngrx/store": "^2.0.0",
     "@ngrx/store-devtools": "^3.1.0",
+    "concurrently": "^3.1.0",
     "core-js": "^2.4.1",
+    "json-server": "^0.9.2",
     "ngrx-store-freeze": "^0.1.4",
     "reselect": "^2.5.4",
     "rxjs": "5.0.0-beta.12",

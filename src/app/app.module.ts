@@ -22,6 +22,7 @@ import { TestControlsComponent } from './containers/test-controls-page/test-cont
 import {routes} from './routes'
 import {reducer} from './reducers'
 import {UserExistsGuard} from './guards/user-exist.guard';
+import {CarService} from './services/car.service'
 
 import { ComponentsModule } from './components';
 
@@ -51,7 +52,7 @@ import { ComponentsModule } from './components';
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
 
   ],
-  providers: [UserExistsGuard],
+  providers: [UserExistsGuard,CarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

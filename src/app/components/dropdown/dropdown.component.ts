@@ -1,4 +1,5 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
+import {Car} from '../../models/cars'
 
 @Component({
   selector: 'app-dropdown',
@@ -8,7 +9,8 @@ import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 export class DropdownComponent implements OnInit {
 
   constructor() { }
-  @Input()items:Array<string>;
+  @Input()items:Car[];
+  @Input()valueselected:Car
   @Output()selected=new EventEmitter<string>();
   ngOnInit() {
   }

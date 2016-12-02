@@ -1,0 +1,32 @@
+{
+  "gitusers": [
+    
+  ],
+  "cars": [
+    {
+      "id": 1,
+      "make": "Toyota",
+      "model": "Corolla"
+    },
+    {
+      "id": 2,
+      "make": "Toyota",
+      "model": "RAV4"
+    },
+    {
+      "id": 3,
+      "make": "Honda",
+      "model": "Civic"
+    },
+    {
+      "id": "5",
+      "make": "Ford",
+      "model": "Taurus"
+    },
+    {
+      "id": "6",
+      "make": "Mazda",
+      "model": "Black II"
+    }
+  ]
+}
