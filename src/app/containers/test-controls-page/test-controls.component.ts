@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import{Observable} from 'rxjs/Observable';
 import{Store} from '@ngrx/store'
+import 'rxjs/add/operator/let';
 
 import {Car} from '../../models/cars'
 import * as cars from '../../actions/cars';
@@ -12,19 +13,24 @@ import * as fromRoot from '../../reducers';
   styleUrls: ['./test-controls.component.css']
 })
 export class TestControlsComponent implements OnInit {
-  cars:Observable<Car[]>
-  selectedItem:Observable<Car>;
-  constructor(private store:Store<fromRoot.State>) { }
+  carlist:Observable<Car[]>
+  selectedItem:Observable<number>;
+  constructor(private store:Store<fromRoot.State>) { 
+      this.carlist=this.store.select(fromRoot.getCarCollection);
+      
+     
+  }
 
   ngOnInit() {
-    this.cars=this.store.select(fromRoot.getCars);
-    this.selectedItem=this.store.select(fromRoot.getSelectedCar)
-    var d=this.selectedItem.subscribe(i=>console.log("i " + i))
-    debugger;
+    
+    this.selectedItem=this.store.select(fromRoot.getSelecteCarId)
+    
+    
 
   }
   selectedCar(item){
     this.store.dispatch(new cars.CarSelected(item))
+   
   }
 
 }

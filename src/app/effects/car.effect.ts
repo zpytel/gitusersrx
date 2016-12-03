@@ -26,9 +26,9 @@ export class CarEffects{
     .ofType(caractions.ActionTypes.CAR_LOAD)
     .startWith(new caractions.CarLoad())
     .switchMap(()=>this.service.getCars())
-    .toArray()
-    .map((cars:Car[])=>new caractions.CarLoadSuccess(cars))
-    .catch(error=>of(new caractions.CarLoadFailed(error))
+    
+    .map((cars:Car[])=> new caractions.CarLoadSuccess(cars))
+    .catch(error=>of(new caractions.CarLoadFailed(error)));
 
 
 }

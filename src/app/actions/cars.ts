@@ -29,7 +29,7 @@ export class CarLoad implements Action{
 export class CarLoadSuccess implements Action{
     type=ActionTypes.CAR_LOAD_SUCCESS;
     constructor(public payload:Car[]){
-
+     
     }
 }
 export class CarLoadFailed implements Action{

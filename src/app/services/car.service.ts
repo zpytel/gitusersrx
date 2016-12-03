@@ -10,7 +10,7 @@ export class CarService{
 
     }
     getCars():Observable<Car[]>{
-        return this.http.get("localhost:4200/api/cars")
-        .map((res:Response)=>res.json())
+        return this.http.get("http://localhost:4200/api/cars")
+        .map((res:Response)=>{return res.json()})
     }
 }
