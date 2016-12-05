@@ -15,6 +15,7 @@ import * as fromRoot from '../../reducers';
 export class TestControlsComponent implements OnInit {
   carlist:Observable<Car[]>
   selectedItem:Observable<number>;
+  selecteCar:Observable<Car>;
   constructor(private store:Store<fromRoot.State>) { 
       this.carlist=this.store.select(fromRoot.getCarCollection);
       
@@ -23,13 +24,15 @@ export class TestControlsComponent implements OnInit {
 
   ngOnInit() {
     
-    this.selectedItem=this.store.select(fromRoot.getSelecteCarId)
+    this.selectedItem=this.store.select(fromRoot.getSelecteCarId);
+    this.selecteCar=this.store.select(fromRoot.getSelectedCar);
     
     
 
   }
   selectedCar(item){
     this.store.dispatch(new cars.CarSelected(item))
+    
    
   }
 

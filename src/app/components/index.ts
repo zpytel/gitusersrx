@@ -10,6 +10,7 @@ import {NavItemComponent} from "../components/nav-item/nav-item.component";
 import {SidenavComponent} from "../components/sidenav/sidenav.component";
 import {ToolbarComponent} from "../components/toolbar/toolbar.component";
 import { DropdownComponent } from '../components/dropdown/dropdown.component'
+import { CarDetailComponent } from '../components/car-detail/car-detail.component';
 
 
 export const COMPONENTS=[
@@ -17,7 +18,8 @@ export const COMPONENTS=[
     NavItemComponent,
     SidenavComponent,
     ToolbarComponent,
-    DropdownComponent
+    DropdownComponent,
+    CarDetailComponent
     ]
 
 @NgModule({

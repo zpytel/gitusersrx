@@ -1,0 +1,13 @@
+<md-card *ngIf="car">
+        <md-card-title-group>
+          <img md-card-sm-image *ngIf="true"/>
+          <md-card-title>{{car.make| uppercase}}</md-card-title>
+          <md-card-subtitle >{{car.make}}</md-card-subtitle>
+        </md-card-title-group>
+        <md-card-content>
+          <p >{{car.model}}</p>
+        </md-card-content>
+        <md-card-footer>
+          cars
+        </md-card-footer>
+</md-card>
