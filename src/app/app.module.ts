@@ -11,7 +11,7 @@ import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
-
+import { CarEffects } from './effects/car.effect';
 import { AppComponent } from './containers/app/app.component';
 import {FindUserPageComponent } from './containers/find-user-page/find-user-page.component';
 import {ViewUserPageComponent} from './containers/view-user-page/view-user-page.component';
@@ -25,6 +25,7 @@ import {UserExistsGuard} from './guards/user-exist.guard';
 import {CarService} from './services/car.service'
 
 import { ComponentsModule } from './components';
+
 
 
 
@@ -50,6 +51,7 @@ import { ComponentsModule } from './components';
     StoreModule.provideStore(reducer),
     RouterStoreModule.connectRouter(),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    EffectsModule.run(CarEffects)
 
   ],
   providers: [UserExistsGuard,CarService],

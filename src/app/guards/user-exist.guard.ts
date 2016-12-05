@@ -13,7 +13,7 @@ canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
   if(route.params['id']>=12){
    return Observable.of(true);
   }else{
-    console.log("error");
+    
     return Observable.of(false);
     
   }

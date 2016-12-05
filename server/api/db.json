@@ -19,14 +19,19 @@
       "model": "Civic"
     },
     {
-      "id": "5",
+      "id": 5,
       "make": "Ford",
       "model": "Taurus"
     },
     {
-      "id": "6",
+      "id": 6,
       "make": "Mazda",
       "model": "Black II"
+    },
+    {
+      "id": 7,
+      "make": "Porsche",
+      "model": "Boxter 3"
     }
   ]
 }

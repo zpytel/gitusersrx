@@ -43,5 +43,11 @@ export const getLayoutState=(state:State)=>state.layout;
 export const getShowSidenav=createSelector(getLayoutState,fromLayout.getShowSidenav)
 
 export const getCarState=(state:State)=>state.car;
-export const getCars=createSelector(getCarState,fromCar.getAll)
+export const getCarEntities=createSelector(getCarState,fromCar.getCarsEntities)
+export const getCarIds=createSelector(getCarState,fromCar.getCarsIds)
+export const getCarCollection=createSelector(getCarEntities,getCarIds,(entities,ids)=>{
+  return ids.map(id=>entities[id]);
+})
+
 export const getSelectedCar=createSelector(getCarState,fromCar.getSelected)
+export const getSelecteCarId=createSelector(getCarState,fromCar.getSelectedId)

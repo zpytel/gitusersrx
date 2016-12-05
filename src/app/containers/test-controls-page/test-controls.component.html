@@ -1,1 +1,3 @@
-<app-dropdown [items]="cars|async" [valueselected]="selectedItem|async" (selected)="selectedCar($event)"></app-dropdown>
+<app-dropdown [items]="carlist|async" [valueselected]="selectedItem|async" (selected)="selectedCar($event)">
+</app-dropdown>
+<app-car-detail [car]="selecteCar|async"></app-car-detail>
