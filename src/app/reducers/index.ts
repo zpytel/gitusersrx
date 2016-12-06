@@ -12,19 +12,18 @@ import { combineReducers } from '@ngrx/store';
 
 import * as fromLayout from './layout.reducer';
 import * as fromCar from './car.reducer';
-import * as fromUndo from './car-undo.reducer';
 
 export interface State{
     layout:fromLayout.State,
     router:fromRouter.RouterState,
     car:fromCar.State
-    undo:fromUndo.UndoableState
 }
 
 const reducers={
  layout:fromLayout.reducer,
  router:fromRouter.routerReducer,
- car:fromUndo.undoable(fromCar.reducer)
+ car:fromCar.reducer
+
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -42,16 +41,9 @@ export function reducer(state: any, action: any) {
 export const getLayoutState=(state:State)=>state.layout;
 
 export const getShowSidenav=createSelector(getLayoutState,fromLayout.getShowSidenav)
-export const getUndoState=(state:State)=>state.undo;
+
 export const getCarState=(state:State)=>state.car;
-export const getUndoCarEntities=createSelector(getUndoState,fromUndo.getPresent)
 export const getCarEntities=createSelector(getCarState,fromCar.getCarsEntities)
-export const getCarUndoIds=createSelector(getUndoState,fromUndo.getIds)
-
-export const getCarUndoCollection=createSelector(getUndoCarEntities,getCarUndoIds,(entities,ids)=>{
-return ids.map(id=>entities[id]);
-});
-
 export const getCarIds=createSelector(getCarState,fromCar.getCarsIds)
 export const getCarCollection=createSelector(getCarEntities,getCarIds,(entities,ids)=>{
   return ids.map(id=>entities[id]);

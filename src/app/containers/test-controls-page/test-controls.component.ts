@@ -17,7 +17,7 @@ export class TestControlsComponent implements OnInit {
   selectedItem:Observable<number>;
   selecteCar:Observable<Car>;
   constructor(private store:Store<fromRoot.State>) { 
-      this.carlist=this.store.select(fromRoot.getCarUndoCollection);
+      this.carlist=this.store.select(fromRoot.getCarCollection);
       
      
   }
