@@ -13,4 +13,9 @@ export class CarService{
         return this.http.get("http://localhost:4200/api/cars")
         .map((res:Response)=>{return res.json()})
     }
+    searchCars(search:string):Observable<Car[]>{
+        
+     return this.http.get(`http://localhost:4200/api/cars?q=${search}`)
+        .map((res:Response)=>{return res.json()})
+    }
 }

@@ -12,18 +12,20 @@ import { combineReducers } from '@ngrx/store';
 
 import * as fromLayout from './layout.reducer';
 import * as fromCar from './car.reducer';
+import * as fromSearch from './search.reducer';
 
 export interface State{
     layout:fromLayout.State,
     router:fromRouter.RouterState,
-    car:fromCar.State
+    car:fromCar.State,
+    search:fromSearch.State
 }
 
 const reducers={
  layout:fromLayout.reducer,
  router:fromRouter.routerReducer,
- car:fromCar.reducer
-
+ car:fromCar.reducer,
+ search:fromSearch.reducer
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -43,11 +45,21 @@ export const getLayoutState=(state:State)=>state.layout;
 export const getShowSidenav=createSelector(getLayoutState,fromLayout.getShowSidenav)
 
 export const getCarState=(state:State)=>state.car;
+export const getSearchState=(state:State)=>state.search
+
 export const getCarEntities=createSelector(getCarState,fromCar.getCarsEntities)
 export const getCarIds=createSelector(getCarState,fromCar.getCarsIds)
 export const getCarCollection=createSelector(getCarEntities,getCarIds,(entities,ids)=>{
   return ids.map(id=>entities[id]);
 })
+export const getSearchCarIds=createSelector(getSearchState,fromSearch.getIds)
+export const getSearchLoaded=createSelector(getSearchState,fromSearch.getLoading);
+export const getSearchQuery=createSelector(getSearchState,fromSearch.getQuery)
 
+
+
+export const getSearchCarsResult=createSelector(getCarEntities,getSearchCarIds,(entities,ids)=>{
+ return ids.map(id=>entities[id])
+})
 export const getSelectedCar=createSelector(getCarState,fromCar.getSelected)
 export const getSelecteCarId=createSelector(getCarState,fromCar.getSelectedId)

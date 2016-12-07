@@ -33,7 +33,7 @@ switch(action.type){
 
         return {
             ids:books.map(book=>book.id),
-            loading:true,
+            loading:false,
             query:state.query
         }
     }

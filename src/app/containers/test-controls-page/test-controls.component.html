@@ -1,3 +1,4 @@
+<app-car-search [query]="searchQuery$ | async" [searching]="loading$ | async" (search)="search($event)"></app-car-search>
 <app-dropdown [items]="carlist|async" [valueselected]="selectedItem|async" (selected)="selectedCar($event)">
 </app-dropdown>
 <app-car-detail [car]="selecteCar|async"></app-car-detail>

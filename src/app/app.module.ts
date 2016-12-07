@@ -12,6 +12,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 import { CarEffects } from './effects/car.effect';
+import {SearchEffect} from './effects/search.effect';
 import { AppComponent } from './containers/app/app.component';
 import {FindUserPageComponent } from './containers/find-user-page/find-user-page.component';
 import {ViewUserPageComponent} from './containers/view-user-page/view-user-page.component';
@@ -29,6 +30,7 @@ import { ComponentsModule } from './components';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,7 @@ import { ComponentsModule } from './components';
     NotFoundPageComponent,
     SelectUserPageComponent,
     TestControlsComponent
+    
    
    
   ],
@@ -51,7 +54,8 @@ import { ComponentsModule } from './components';
     StoreModule.provideStore(reducer),
     RouterStoreModule.connectRouter(),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
-    EffectsModule.run(CarEffects)
+    EffectsModule.run(CarEffects),
+    EffectsModule.run(SearchEffect)
 
   ],
   providers: [UserExistsGuard,CarService],

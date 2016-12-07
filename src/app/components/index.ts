@@ -11,7 +11,7 @@ import {SidenavComponent} from "../components/sidenav/sidenav.component";
 import {ToolbarComponent} from "../components/toolbar/toolbar.component";
 import { DropdownComponent } from '../components/dropdown/dropdown.component'
 import { CarDetailComponent } from '../components/car-detail/car-detail.component';
-
+import { CarSearchComponent } from '../components/car-search/car-search.component';
 
 export const COMPONENTS=[
     LayoutComponent,
@@ -19,7 +19,8 @@ export const COMPONENTS=[
     SidenavComponent,
     ToolbarComponent,
     DropdownComponent,
-    CarDetailComponent
+    CarDetailComponent,
+    CarSearchComponent
     ]
 
 @NgModule({
