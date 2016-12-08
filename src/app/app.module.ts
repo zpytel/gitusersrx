@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
@@ -20,12 +20,14 @@ import { CollectionPageComponent } from './containers/collection-page/collection
 import { NotFoundPageComponent } from './containers/not-found-page/not-found-page.component';
 import {SelectUserPageComponent} from './containers/select-user-page/select-user-page.component';
 import { TestControlsComponent } from './containers/test-controls-page/test-controls.component';
+import { FormPageComponent } from './containers/form-page/form-page.component';
 import {routes} from './routes'
 import {reducer} from './reducers'
 import {UserExistsGuard} from './guards/user-exist.guard';
 import {CarService} from './services/car.service'
 
 import { ComponentsModule } from './components';
+
 
 
 
@@ -39,14 +41,15 @@ import { ComponentsModule } from './components';
     CollectionPageComponent,
     NotFoundPageComponent,
     SelectUserPageComponent,
-    TestControlsComponent
+    TestControlsComponent,
+    FormPageComponent
+   
     
    
    
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpModule,
     ComponentsModule,
     MaterialModule.forRoot(),

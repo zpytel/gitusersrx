@@ -6,6 +6,7 @@ import { NotFoundPageComponent } from './containers/not-found-page/not-found-pag
 import {SelectUserPageComponent} from './containers/select-user-page/select-user-page.component';
 import {UserExistsGuard} from './guards/user-exist.guard'
 import {TestControlsComponent} from './containers/test-controls-page/test-controls.component';
+import { FormPageComponent } from './containers/form-page/form-page.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,10 @@ export const routes: Routes = [
     path: 'book/:id',
     canActivate: [ UserExistsGuard ],
     component: ViewUserPageComponent
+  },
+  {
+    path:'form',
+    component:FormPageComponent
   },
   {
     path: '**',
