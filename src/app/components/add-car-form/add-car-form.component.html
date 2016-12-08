@@ -4,25 +4,45 @@
    
   </md-card-title-group>
   <md-card-content>
-     <form>
+     <form novalidate [formGroup]="form" >
       <table  cellspacing="0">
         <tr>
           <td>
-            <md-input placeholder="car mark" ></md-input>
+            <md-input placeholder="car mark" formControlName="mark" ></md-input>
           </td>
         </tr>
 
         <tr>
           <td>
-            <md-input placeholder="car model"></md-input>
+            <md-input placeholder="car model" formControlName="model"></md-input>
+          </td>
+        </tr>
+        <tr>
+          <td formGroupName="account">
+            
+            <md-input placeholder="user name *" formControlName="user"></md-input>
+            <md-input placeholder="user password *" formControlName="pass" type="password" ></md-input>
+            <md-input formControlName="confirm" ></md-input>
+          </td>
+
+        </tr>
+
+        <tr>
+          <td>
+           <button md-raised-button color="primary"> <i class="material-icons app-input-icon">check</i></button>
           </td>
         </tr>
       </table>
     </form>
   </md-card-content>
   <md-card-footer>
-    <button md-raised-button color="primary"> <i class="material-icons app-input-icon">check</i></button>
+    
+   
   </md-card-footer>
 </md-card>
-
+<md-card>
+ <p>Form:{{form.value | json}}</p>
+ <p>Form status:{{form.status }}</p>
+ <p>Account erors:{{form.get('account').errors | json}}</p>
+</md-card>
 
