@@ -16,14 +16,18 @@ export class CustomSwithcherComponent implements ControlValueAccessor {
   constructor() { }
   writeValue(val:any){
     this.isOn=!!val;
+    this.isOn?this.icon=this.state[1]:this.icon=this.state[0];
   }
   registerOnChange(fn:(val:any)=>void){
    this._onChange=fn;
   }
   registerOnTouched(){
-
+  
   }
-
+  onChangeFunction(val:any){
+   this.isOn?this.icon=this.state[1]:this.icon=this.state[0];
+  }
+  
   toggle(){
     this.isOn=!this.isOn;
     this.isOn?this.icon=this.state[1]:this.icon=this.state[0];

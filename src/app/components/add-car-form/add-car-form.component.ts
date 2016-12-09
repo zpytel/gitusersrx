@@ -24,7 +24,8 @@ export class AddCarFormComponent implements OnInit {
     },{validator:passwordMatcher}),
       
    });
-   this.form.patchValue({mark:"Ferrari",model:"Diablo"});
+   this.form.patchValue(
+     {mark:"Ferrari",model:"Diablo",account:{switcher:true}});
 
   }
     
