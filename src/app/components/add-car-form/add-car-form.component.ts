@@ -19,8 +19,10 @@ export class AddCarFormComponent implements OnInit {
     account:this.fb.group({
       user:['',Validators.required],
       pass:['',Validators.required],
-      confirm:['',Validators.required]
+      confirm:['',Validators.required],
+      switcher:[false]
     },{validator:passwordMatcher}),
+      
    });
    this.form.patchValue({mark:"Ferrari",model:"Diablo"});
 

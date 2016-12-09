@@ -19,10 +19,15 @@
         </tr>
         <tr>
           <td formGroupName="account">
+            <table><tr><td>
+            <md-input placeholder="user name *" formControlName="user"></md-input></td></tr><tr><td>
+            <md-input placeholder="user password *" formControlName="pass" type="password" ></md-input></td></tr><tr><td>
+            <md-input placeholder="confirm password *" formControlName="confirm" type="password" ></md-input></td></tr>
+            <tr><td>
+              <app-custom-swithcher formControlName="switcher"></app-custom-swithcher>
+              </td></tr>
+            </table>
             
-            <md-input placeholder="user name *" formControlName="user"></md-input>
-            <md-input placeholder="user password *" formControlName="pass" type="password" ></md-input>
-            <md-input formControlName="confirm" ></md-input>
           </td>
 
         </tr>
