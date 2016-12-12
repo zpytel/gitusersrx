@@ -13,19 +13,22 @@ import { combineReducers } from '@ngrx/store';
 import * as fromLayout from './layout.reducer';
 import * as fromCar from './car.reducer';
 import * as fromSearch from './search.reducer';
+import * as fromLogon from './logon.reducer';
 
 export interface State{
     layout:fromLayout.State,
     router:fromRouter.RouterState,
     car:fromCar.State,
-    search:fromSearch.State
+    search:fromSearch.State,
+    logon:fromLogon.State
 }
 
 const reducers={
  layout:fromLayout.reducer,
  router:fromRouter.routerReducer,
  car:fromCar.reducer,
- search:fromSearch.reducer
+ search:fromSearch.reducer,
+ logon:fromLogon.reducer
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -41,8 +44,10 @@ export function reducer(state: any, action: any) {
 }
 
 export const getLayoutState=(state:State)=>state.layout;
-
 export const getShowSidenav=createSelector(getLayoutState,fromLayout.getShowSidenav)
+
+export const getLogonState=(state:State)=>state.logon;
+export const getLogon=createSelector(getLogonState,fromLogon.getLogon)
 
 export const getCarState=(state:State)=>state.car;
 export const getSearchState=(state:State)=>state.search

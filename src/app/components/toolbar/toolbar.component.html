@@ -3,4 +3,8 @@
         <md-icon>menu</md-icon>
       </button>
       <ng-content></ng-content>
+      <span class="demo-fill-remaining"></span>
+        <button md-button class="login" *ngIf="!auth.authenticated()" (click)="auth.login()"><md-icon color="accent">person_outline</md-icon>Log In </button>
+        <button md-button class="login" *ngIf="auth.authenticated()" (click)="auth.logout()"><md-icon color="accent">person</md-icon>Log Out</button>
+       
     </md-toolbar>

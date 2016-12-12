@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {AUTH_PROVIDERS} from 'angular2-jwt';
 
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
@@ -25,6 +26,7 @@ import {routes} from './routes'
 import {reducer} from './reducers'
 import {UserExistsGuard} from './guards/user-exist.guard';
 import {CarService} from './services/car.service'
+import {Auth} from './services/auth.service'
 
 import { ComponentsModule } from './components';
 
@@ -55,7 +57,7 @@ import { ComponentsModule } from './components';
     HttpModule,
     ComponentsModule,
     MaterialModule.forRoot(),
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes, { useHash: false }),
     StoreModule.provideStore(reducer),
     RouterStoreModule.connectRouter(),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
@@ -63,7 +65,11 @@ import { ComponentsModule } from './components';
     EffectsModule.run(SearchEffect)
 
   ],
-  providers: [UserExistsGuard,CarService],
+  providers:[
+   UserExistsGuard
+  ,CarService
+  ,AUTH_PROVIDERS
+  ,Auth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

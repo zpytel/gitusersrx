@@ -1,5 +1,5 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
-
+import { Component, OnInit,Output,Input,EventEmitter } from '@angular/core';
+import {Auth} from '../../services/auth.service';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -7,11 +7,12 @@ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth:Auth) { }
 
   ngOnInit() {
   }
 
   @Output() openMenu=new EventEmitter();
+  
 
 }
