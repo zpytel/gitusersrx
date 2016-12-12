@@ -1,27 +1,33 @@
 import {createSelector} from 'reselect'
 import * as auth from '../actions/auth.action'
+import {User,Profile} from '../models/auth.model'
 
 export interface State{
-    logon:boolean;
+    authenticated:boolean,
+    profile:Profile;
 }
 
 const initialState:State={
-    logon:false,
+    authenticated:false,
+    profile:{name:'',email:'',image:'',nick:''}
 }
 
 export function reducer(state=initialState,action:auth.Actions):State{
     switch(action.type){
        
         case auth.ActionTypes.LOGIN:{
+            const user=action.payload;
             
             return {
-                logon:true
+               authenticated:user.authenticated,
+               profile:Object.assign({},user.profile)
             };
         }
         case auth.ActionTypes.LOGOUT:{
-            
+            const user=action.payload;
             return {
-                logon:false
+              authenticated:user.authenticated,
+               profile:Object.assign({},user.profile)
             };
         }
         default:{
@@ -31,4 +37,5 @@ export function reducer(state=initialState,action:auth.Actions):State{
     }
 }
 
-export const getLogon=(state:State)=>state.logon;
+export const getAuthenticated=(state:State)=>state.authenticated;
+export const getProfile=(state:State)=>state.profile;

@@ -4,7 +4,7 @@ import{Store} from '@ngrx/store'
 
 
 import * as layout from '../../actions/layout';
-import * as logon from '../../actions/auth.action';
+
 import * as fromRoot from '../../reducers';
 @Component({
   selector: 'git-users-root',

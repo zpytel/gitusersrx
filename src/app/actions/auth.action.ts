@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store';
 import {type} from '../utils/util';
+import {User,Profile} from '../models/auth.model'
 
 
 export const ActionTypes={
@@ -9,7 +10,7 @@ export const ActionTypes={
 
 export class LoginUser implements Action{
     type=ActionTypes.LOGIN;
-    constructor(){}
+    constructor(public payload:User){}
     
 }
 
@@ -17,7 +18,7 @@ export class LoginUser implements Action{
 
 export class LogoutUser implements Action{
     type=ActionTypes.LOGOUT;
-    constructor(){}
+    constructor(public payload:User){}
     
 }
 

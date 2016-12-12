@@ -47,7 +47,9 @@ export const getLayoutState=(state:State)=>state.layout;
 export const getShowSidenav=createSelector(getLayoutState,fromLayout.getShowSidenav)
 
 export const getLogonState=(state:State)=>state.logon;
-export const getLogon=createSelector(getLogonState,fromLogon.getLogon)
+export const getAuthenticated=createSelector(getLogonState,fromLogon.getAuthenticated);
+export const getProfile=createSelector(getLogonState,fromLogon.getProfile);
+
 
 export const getCarState=(state:State)=>state.car;
 export const getSearchState=(state:State)=>state.search
