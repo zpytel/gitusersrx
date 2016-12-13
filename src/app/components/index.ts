@@ -14,6 +14,8 @@ import { CarDetailComponent } from '../components/car-detail/car-detail.componen
 import { CarSearchComponent } from '../components/car-search/car-search.component';
 import { AddCarFormComponent } from '../components/add-car-form/add-car-form.component';
 import { CustomSwithcherComponent } from '../controls/custom-swithcher/custom-swithcher.component';
+import { UserProfileComponent } from '../components/user-profile/user-profile.component';
+
 export const COMPONENTS=[
     LayoutComponent,
     NavItemComponent,
@@ -23,7 +25,9 @@ export const COMPONENTS=[
     CarDetailComponent,
     CarSearchComponent,
     AddCarFormComponent,
-    CustomSwithcherComponent
+    CustomSwithcherComponent,
+    UserProfileComponent
+    
     ]
 
 @NgModule({
