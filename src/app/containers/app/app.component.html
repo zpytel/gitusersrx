@@ -3,8 +3,8 @@
         <app-nav-item (activate)="closeSidenav()" routerLink="/" icon="book" hint="View your book collection">
           My Collection
         </app-nav-item>
-        <app-nav-item (activate)="closeSidenav()" routerLink="/book/find" icon="search" hint="Find your next book!">
-          Browse User
+        <app-nav-item (activate)="closeSidenav()" routerLink="/profile" icon="person" hint="See you profile">
+          User Profile
         </app-nav-item>
          <app-nav-item (activate)="closeSidenav()" routerLink="/form" icon="directions_car" hint="add car to main list">
           Add Car
@@ -13,7 +13,7 @@
           Select Fav Car
         </app-nav-item>
       </app-sidenav>
-      <app-toolbar (openMenu)="openSidenav()" >
+      <app-toolbar (openMenu)="openSidenav()" [user]="($user|async)" (clickLink)="clicked($event)">
         Stuff
            
         </app-toolbar>

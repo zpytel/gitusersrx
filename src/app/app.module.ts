@@ -15,7 +15,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CarEffects } from './effects/car.effect';
 import {SearchEffect} from './effects/search.effect';
 import { AppComponent } from './containers/app/app.component';
-import {FindUserPageComponent } from './containers/find-user-page/find-user-page.component';
+import {UserProfileComponent } from './containers/user-profile-page/user-profile.component';
 import {ViewUserPageComponent} from './containers/view-user-page/view-user-page.component';
 import { CollectionPageComponent } from './containers/collection-page/collection-page.component';
 import { NotFoundPageComponent } from './containers/not-found-page/not-found-page.component';
@@ -40,7 +40,7 @@ import { ComponentsModule } from './components';
 @NgModule({
   declarations: [
     AppComponent,
-    FindUserPageComponent,
+    UserProfileComponent,
     ViewUserPageComponent,
     CollectionPageComponent,
     NotFoundPageComponent,

@@ -1,5 +1,6 @@
 import { Component, OnInit,Output,Input,EventEmitter } from '@angular/core';
-import {Auth} from '../../services/auth.service';
+
+import {User} from '../../models/auth.model'
 
 @Component({
   selector: 'app-toolbar',
@@ -8,13 +9,14 @@ import {Auth} from '../../services/auth.service';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(private auth:Auth) { }
+  constructor() { }
   
   ngOnInit() {
 
   }
 
   @Output() openMenu=new EventEmitter();
-  
+  @Output() clickLink=new EventEmitter<string>();
+  @Input()user:User;
 
 }

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import {FindUserPageComponent } from './containers/find-user-page/find-user-page.component';
+import {UserProfileComponent } from './containers/user-profile-page/user-profile.component';
 import {ViewUserPageComponent} from './containers/view-user-page/view-user-page.component';
 import { CollectionPageComponent } from './containers/collection-page/collection-page.component';
 import { NotFoundPageComponent } from './containers/not-found-page/not-found-page.component';
@@ -18,8 +18,8 @@ export const routes: Routes = [
    component:TestControlsComponent
   },
   {
-    path: 'book/find',
-    component: FindUserPageComponent
+    path: 'profile',
+    component: UserProfileComponent
   },
   {
     path: 'book/:id',
