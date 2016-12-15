@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import {Http,Response} from '@angular/http';
-import {Observable} from 'rxjs/Observable'
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
+import {Observable} from 'rxjs/Observable';
+import {AngularFire} from 'angularfire2';
+
 
 import {Car} from '../models/cars'
 
 @Injectable()
 export class CarService{
-    constructor(private http:Http){
+    
+    constructor(private fb:AngularFire){
 
     }
     getCars():Observable<Car[]>{
-        return this.http.get("http://localhost:4200/api/cars")
-        .map((res:Response)=>{return res.json()})
+        return this.fb.database.list('/cars');
     }
     searchCars(search:string):Observable<Car[]>{
-        
-     return this.http.get(`http://localhost:4200/api/cars?q=${search}`)
-        .map((res:Response)=>{return res.json()})
+     return this.fb.database.list('/cars',{query:{orderByChild:'make',equalTo:search}});
+     //.map(items=>items.filter((item:Car)=>item.mark.indexOf(search)));
+    
     }
 }

@@ -2,12 +2,15 @@ import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import {Store} from '@ngrx/store'
 
+//import Auth0Lock from "auth0-lock";
+import * as authjs from "auth0-js";
 import * as logon from '../actions/auth.action';
 import * as fromRoot from '../reducers';
 
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
+//let Auth0Lock = require('auth0-lock').default;
 
 @Injectable()
 export class Auth {

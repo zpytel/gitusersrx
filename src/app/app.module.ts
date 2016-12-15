@@ -10,7 +10,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { DBModule } from '@ngrx/db';
 import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
+import {AngularFireModule} from 'angularfire2';
+import {firebaseConfig} from './utils/firebase.config';
 
 import { CarEffects } from './effects/car.effect';
 import {SearchEffect} from './effects/search.effect';
@@ -63,7 +64,8 @@ import { ComponentsModule } from './components';
     RouterStoreModule.connectRouter(),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(CarEffects),
-    EffectsModule.run(SearchEffect)
+    EffectsModule.run(SearchEffect),
+    AngularFireModule.initializeApp(firebaseConfig)
 
   ],
   providers:[
