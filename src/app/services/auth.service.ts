@@ -1,81 +1,103 @@
 import { Injectable }      from '@angular/core';
-import { tokenNotExpired } from 'angular2-jwt';
-import {Store} from '@ngrx/store'
 
-//import Auth0Lock from "auth0-lock";
-import * as authjs from "auth0-js";
+import {Store} from '@ngrx/store'
+import { AngularFire, AuthProviders, AuthMethods, FirebaseAuthState } from 'angularfire2';
+import * as firebase from 'firebase';
+
+import 'rxjs/add/operator/toPromise';
+import {firebaseAuthConfig} from '../utils/firebase.config'
+
+
+
 import * as logon from '../actions/auth.action';
 import * as fromRoot from '../reducers';
 
-
-// Avoid name not found warnings
-declare var Auth0Lock: any;
-//let Auth0Lock = require('auth0-lock').default;
-
 @Injectable()
 export class Auth {
-  userProfile:Object;
-  // Configure Auth0
-  lock = new Auth0Lock('LrxTeg8Vw7U1A1mPAbe8uUX1r3cKaHSX', 'zpytel.auth0.com', {});
+ public isAuthenticated = false;
+  public displayName: string = '';
+  public photoUrl: string = '';
+  public email: string = '';
+ 
+  constructor(private store:Store<fromRoot.State>,private af:AngularFire) {
+  }
 
-  constructor(private store:Store<fromRoot.State>) {
-    this.userProfile=JSON.parse(localStorage.getItem('profile'))
-    // Add callback for lock `authenticated` event
-    this.lock.on("authenticated", (authResult) => {
-      localStorage.setItem('id_token', authResult.idToken);
-     
-      
-   
-     this.lock.getProfile(authResult.idToken, (error, profile) => {
-        if (error) {
-          // Handle error
-          alert(error);
-          return;
-        }
 
-        localStorage.setItem('profile', JSON.stringify(profile));
-        this.userProfile = profile;
-        
-        let prof=JSON.parse(JSON.stringify(profile));
+ private storeAuthInfo(authState: FirebaseAuthState) {
+   console.log
+    if (authState) {
+      this.displayName = authState.auth.displayName;
+      this.photoUrl = authState.auth.photoURL;
+      this.email=authState.auth.email;
+      this.isAuthenticated = true;
+      if (authState.google) {
+        localStorage.setItem('idToken', (authState.google as any).idToken);
+        localStorage.setItem('accessToken', (authState.google as any).accessToken);
         this.store.dispatch(new logon.LoginUser
         ({authenticated:true,profile:{
-          name:prof.name,
-          email:prof.email,
-          nick:prof.nickname,
-          image:prof.picture
+          name:this.displayName,
+          email:this.email,
+          nick:this.displayName,
+          image:this.photoUrl
         }}))
-        
-     });
-
-   });
-  }
-
-  public login() {
-    // Call the show method to display the widget.
-    this.lock.show();
-  }
-
-  public authenticated() :boolean{
-    let ret:boolean=false;
-    // Check if there's an unexpired JWT
-    // This searches for an item in localStorage with key == 'id_token'
-    if(tokenNotExpired){
-    ret=tokenNotExpired();
+      }
     }
-    return ret
+   
   }
 
-  public logout() {
-    // Remove token from localStorage
-     this.store.dispatch(new logon.LogoutUser({authenticated:false,profile:{
+   login(): firebase.Promise<FirebaseAuthState> {
+
+    const idToken = localStorage.getItem('idToken');
+    const accessToken = localStorage.getItem('accessToken');
+
+    if (idToken && accessToken) {
+
+      const authConfig = {
+        method: AuthMethods.OAuthToken,
+        provider: AuthProviders.Google
+      };
+      const credential = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
+       this.af.auth.login(credential, authConfig).then((authState) => {
+        console.log("Successful Token-based Login");
+         this.storeAuthInfo(authState);
+      }).catch((err) => {
+        console.log("Error with auth token: " + err, " Clearing cached token..");
+       
+        this.logoutStore();
+      });
+    } else {
+      // fall through to popup auth
+      return this.af.auth.login({
+        method: AuthMethods.Popup
+      }).then((authState) => {
+        console.log("Successful OAuth-based Login");
+        return this.storeAuthInfo(authState);
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
+  }
+
+  logout() {
+     this.logoutStore()
+    this.af.auth.logout();
+  }
+
+  logoutStore(){
+this.store.dispatch(new logon.LogoutUser({authenticated:false,profile:{
        name:'',
        email:'',
        nick:'',
        image:''
      }}));
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('profile');
-    this.userProfile = undefined;
-    
+
+
+    localStorage.setItem('idToken', '');
+    localStorage.setItem('accessToken', '');
   }
+
+
 }
+      
+   
+ 

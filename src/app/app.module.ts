@@ -10,8 +10,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { DBModule } from '@ngrx/db';
 import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import {AngularFireModule} from 'angularfire2';
-import {firebaseConfig} from './utils/firebase.config';
+import {AngularFireModule,AuthProviders,AuthMethods} from 'angularfire2';
+
+import {firebaseConfig,firebaseAuthConfig} from './utils/firebase.config';
 
 import { CarEffects } from './effects/car.effect';
 import {SearchEffect} from './effects/search.effect';
@@ -30,7 +31,6 @@ import {CarService} from './services/car.service'
 import {Auth} from './services/auth.service'
 
 import { ComponentsModule } from './components';
-
 
 
 
@@ -65,7 +65,7 @@ import { ComponentsModule } from './components';
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(CarEffects),
     EffectsModule.run(SearchEffect),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig,firebaseAuthConfig)
 
   ],
   providers:[

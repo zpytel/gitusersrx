@@ -15,10 +15,12 @@ export class CarService{
 
     }
     getCars():Observable<Car[]>{
+       
         return this.fb.database.list('/cars');
     }
     searchCars(search:string):Observable<Car[]>{
-     return this.fb.database.list('/cars',{query:{orderByChild:'make',equalTo:search}});
+      
+     return this.fb.database.list('/cars');
      //.map(items=>items.filter((item:Car)=>item.mark.indexOf(search)));
     
     }
