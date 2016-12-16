@@ -47,25 +47,7 @@ export class Auth {
 
    login(): firebase.Promise<FirebaseAuthState> {
 
-    const idToken = localStorage.getItem('idToken');
-    const accessToken = localStorage.getItem('accessToken');
-
-    if (idToken && accessToken) {
-
-      const authConfig = {
-        method: AuthMethods.OAuthToken,
-        provider: AuthProviders.Google
-      };
-      const credential = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
-       this.af.auth.login(credential, authConfig).then((authState) => {
-        console.log("Successful Token-based Login");
-         this.storeAuthInfo(authState);
-      }).catch((err) => {
-        console.log("Error with auth token: " + err, " Clearing cached token..");
-       
-        this.logoutStore();
-      });
-    } else {
+   
       // fall through to popup auth
       return this.af.auth.login({
         method: AuthMethods.Popup
@@ -75,7 +57,7 @@ export class Auth {
       }).catch((err) => {
         console.log(err);
       });
-    }
+    
   }
 
   logout() {
