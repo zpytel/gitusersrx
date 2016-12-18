@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
    this.$showSidenav=this.store.select(fromRoot.getShowSidenav);
    this.$user=this.store.select(fromRoot.getLogonState)
+   this.auth.logintb();
   }
   openSidenav(){
     this.store.dispatch(new layout.OpenSidenavAction())

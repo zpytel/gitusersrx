@@ -22,17 +22,20 @@ export class Auth {
   constructor(private store:Store<fromRoot.State>,private af:AngularFire) {
   }
 
-
+//sixi
  private storeAuthInfo(authState: FirebaseAuthState) {
-   console.log
+        localStorage.setItem('idToken', '');
+        localStorage.setItem('accessToken', '');
+   
     if (authState) {
       this.displayName = authState.auth.displayName;
       this.photoUrl = authState.auth.photoURL;
       this.email=authState.auth.email;
       this.isAuthenticated = true;
-      if (authState.google) {
+      if(authState.google){
         localStorage.setItem('idToken', (authState.google as any).idToken);
         localStorage.setItem('accessToken', (authState.google as any).accessToken);
+      }
         this.store.dispatch(new logon.LoginUser
         ({authenticated:true,profile:{
           name:this.displayName,
@@ -40,14 +43,32 @@ export class Auth {
           nick:this.displayName,
           image:this.photoUrl
         }}))
-      }
+      
     }
    
   }
-
+   logintb():firebase.Promise<FirebaseAuthState> {
+        const idToken = localStorage.getItem('idToken');
+       const accessToken = localStorage.getItem('accessToken');
+       if (idToken && accessToken) {
+     
+      const authConfig = {
+        method: AuthMethods.OAuthToken,
+        provider: AuthProviders.Google
+      };
+      const credential = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
+      return this.af.auth.login(credential, authConfig).then((authState) => {
+       
+      return this.storeAuthInfo(authState);
+      }).catch((err) => {
+        console.log("Error with auth token: " + err, " Clearing cached token..");
+        localStorage.setItem('idToken', '');
+        localStorage.setItem('accessToken', '');
+      });
+   }
+   } 
    login(): firebase.Promise<FirebaseAuthState> {
-
-   
+       
       // fall through to popup auth
       return this.af.auth.login({
         method: AuthMethods.Popup
