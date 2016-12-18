@@ -29,10 +29,10 @@ switch(action.type){
        return Object.assign({},state,{query:squery,loading:true})
     }
     case(search.ActionTypes.SEARCH_COMPLETE):{
-     const books=action.payload;
+     const cars=action.payload;
 
         return {
-            ids:books.map(book=>book.id),
+            ids:cars.map(car=>car.id),
             loading:false,
             query:state.query
         }

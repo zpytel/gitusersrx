@@ -23,16 +23,18 @@ export class TestControlsComponent implements OnInit {
   loading$: Observable<boolean>;
   
   constructor(private store:Store<fromRoot.State>) { 
-      this.carlist=this.store.select(fromRoot.getSearchCarsResult);
-      this.searchQuery$ = store.select(fromRoot.getSearchQuery).take(1);
-     this.loading$ = store.select(fromRoot.getSearchLoaded);
+      
+    
+    
   }
 
   ngOnInit() {
-    
+    this.carlist=this.store.select(fromRoot.getSearchCarsResult);
+    this.searchQuery$ = this.store.select(fromRoot.getSearchQuery).take(1);
+    this.loading$ = this.store.select(fromRoot.getSearchLoaded);
     this.selectedItem=this.store.select(fromRoot.getSelecteCarId);
     this.selecteCar=this.store.select(fromRoot.getSelectedCar);
-    
+    this.store.dispatch(new cars.CarLoad())
     
 
   }

@@ -52,7 +52,7 @@ export class Auth {
       return this.af.auth.login({
         method: AuthMethods.Popup
       }).then((authState) => {
-        console.log("Successful OAuth-based Login");
+        
         return this.storeAuthInfo(authState);
       }).catch((err) => {
         console.log(err);

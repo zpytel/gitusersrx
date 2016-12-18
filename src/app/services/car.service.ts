@@ -15,11 +15,11 @@ export class CarService{
 
     }
     getCars():Observable<Car[]>{
-       
+        
         return this.fb.database.list('/cars');
     }
     searchCars(search:string):Observable<Car[]>{
-      
+     console.log("in serchcars()")
      return this.fb.database.list('/cars');
      //.map(items=>items.filter((item:Car)=>item.mark.indexOf(search)));
     

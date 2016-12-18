@@ -31,6 +31,7 @@ export function reducer(state=initState,action:caraction.Actions):State{
             const carsEntities=newcars.reduce((entities:{[id:number]:Car},car:Car)=>{
                 return Object.assign(entities,{[car.id]:car})
             },{})
+           
             return {
                 ids:[...state.ids,...newcarsids],
                 entities:Object.assign({},state.entities,carsEntities),

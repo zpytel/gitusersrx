@@ -24,7 +24,8 @@ export class CarEffects{
     @Effect()
     loadCars$:Observable<Action>=this.actions$
     .ofType(caractions.ActionTypes.CAR_LOAD)
-    .startWith(new caractions.CarLoad())
+    //.startWith(new caractions.CarLoad())
+    .map((action:caractions.CarLoad)=>action)
     .switchMap(()=>this.service.getCars())
     .map((cars:Car[])=> new caractions.CarLoadSuccess(cars))
     .catch(error=>of(new caractions.CarLoadFailed(error)));
