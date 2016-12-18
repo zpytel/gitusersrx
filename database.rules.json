@@ -1,6 +1,12 @@
 {
   "rules": {
+    "cars":{
     ".read": "auth != null",
-    ".write": "auth != null"
+    ".write": "root.child('admins').hasChild(auth.uid)"
+    },
+      "admins":{
+        ".read": "root.child('admins').hasChild(auth.uid)",
+        ".write": "root.child('admins').hasChild(auth.uid)"
+      }
   }
 }
