@@ -29,6 +29,14 @@ export class CarEffects{
     .switchMap(()=>this.service.getCars())
     .map((cars:Car[])=> new caractions.CarLoadSuccess(cars))
     .catch(error=>of(new caractions.CarLoadFailed(error)));
+    
+    @Effect()
+    addCar$:Observable<Action>=this.actions$
+    .ofType(caractions.ActionTypes.CAR_ADD)
+    .map((action:caractions.CarAdd)=>action.payload)
+    .switchMap((car:Car)=>this.service.addCar(car))
+    .map((car:Car)=>new caractions.CarAddSuccess(car))
+    .catch(error=>of(new caractions.CarLoadFailed(error)))
 
 
 }

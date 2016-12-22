@@ -4,7 +4,8 @@ import {ViewUserPageComponent} from './containers/view-user-page/view-user-page.
 import { CollectionPageComponent } from './containers/collection-page/collection-page.component';
 import { NotFoundPageComponent } from './containers/not-found-page/not-found-page.component';
 import {SelectUserPageComponent} from './containers/select-user-page/select-user-page.component';
-import {UserExistsGuard} from './guards/user-exist.guard'
+import {UserExistsGuard} from './guards/user-exist.guard';
+import {AuthenticateGuard} from './guards/authenticate.guard'
 import {TestControlsComponent} from './containers/test-controls-page/test-controls.component';
 import { FormPageComponent } from './containers/form-page/form-page.component';
 
@@ -16,10 +17,12 @@ export const routes: Routes = [
   {
    path:'cars',
    component:TestControlsComponent
+   
   },
   {
     path: 'profile',
-    component: UserProfileComponent
+    component: UserProfileComponent,
+    canActivate:[AuthenticateGuard]
   },
   {
     path: 'book/:id',
@@ -28,10 +31,17 @@ export const routes: Routes = [
   },
   {
     path:'form',
-    component:FormPageComponent
+    component:FormPageComponent,
+    canActivate:[AuthenticateGuard]
+  },
+  {
+    path:'zibi',
+    component:FormPageComponent,
+    outlet:'zibioutlet'
   },
   {
     path: '**',
     component: NotFoundPageComponent
   }
+  
 ];

@@ -24,4 +24,8 @@ export class CarService{
      //.map(items=>items.filter((item:Car)=>item.mark.indexOf(search)));
     
     }
+    addCar(car:Car):any{
+       return this.fb.database.object('/cars').set(car).then(()=>car);
+        
+    }
 }

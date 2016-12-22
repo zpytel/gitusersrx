@@ -9,7 +9,9 @@ export const ActionTypes={
     CAR_LOAD:type("[cars] Car Load"),
     CAR_SELECTED:type("[cars] Car Selected"),
     CAR_LOAD_SUCCESS:type("[cars] Car Load Success"),
-    CAR_LOAD_FAIL:type("[cars] Car load Failed ")
+    CAR_LOAD_FAIL:type("[cars] Car load Failed "),
+    CAR_ADD:type("[Car] Car add"),
+    CAR_ADD_SUCCESS:type("[Car] Car added successfull")
 }
 
 export class CarSelected implements Action{
@@ -39,9 +41,25 @@ export class CarLoadFailed implements Action{
 
     }
 }
+export class CarAdd implements Action{
+    type=ActionTypes.CAR_ADD;
+
+    constructor(public payload:Car){
+
+    }
+}
+export class CarAddSuccess implements Action{
+    type=ActionTypes.CAR_ADD_SUCCESS;
+
+    constructor(public payload:Car){
+        
+    }
+}
 
 export type Actions=
 CarSelected
 |CarLoad
 |CarLoadFailed
 |CarLoadSuccess
+|CarAdd
+|CarAddSuccess

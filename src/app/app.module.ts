@@ -27,6 +27,7 @@ import { FormPageComponent } from './containers/form-page/form-page.component';
 import {routes} from './routes'
 import {reducer} from './reducers'
 import {UserExistsGuard} from './guards/user-exist.guard';
+import {AuthenticateGuard} from './guards/authenticate.guard'
 import {CarService} from './services/car.service'
 import {Auth} from './services/auth.service'
 
@@ -70,6 +71,7 @@ import { ComponentsModule } from './components';
   ],
   providers:[
    UserExistsGuard
+  ,AuthenticateGuard
   ,CarService
   ,AUTH_PROVIDERS
   ,Auth],

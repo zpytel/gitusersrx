@@ -24,6 +24,15 @@ export function reducer(state=initState,action:caraction.Actions):State{
               selectedCarId:carselcted.id
           }
         }
+        case caraction.ActionTypes.CAR_ADD_SUCCESS:{
+            const car=action.payload;
+            const newcarentity={[car.id]:car}
+            return{
+                ids:[...state.ids,car.id],
+                entities:Object.assign({},state.entities,newcarentity),
+                selectedCarId:state.selectedCarId
+            }
+        }
         case caraction.ActionTypes.CAR_LOAD_SUCCESS:{
             const cars=action.payload;
             const newcars = cars.filter(car => !state.entities[car.id]);

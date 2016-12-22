@@ -35,6 +35,7 @@ export class Auth {
       if(authState.google){
         localStorage.setItem('idToken', (authState.google as any).idToken);
         localStorage.setItem('accessToken', (authState.google as any).accessToken);
+        console.log("token: " + (authState.google as any).idToken)
       }
         this.store.dispatch(new logon.LoginUser
         ({authenticated:true,profile:{
