@@ -15,6 +15,7 @@ import { CarSearchComponent } from '../components/car-search/car-search.componen
 import { AddCarFormComponent } from '../components/add-car-form/add-car-form.component';
 import { CustomSwithcherComponent } from '../controls/custom-swithcher/custom-swithcher.component';
 import { UserProfileComponent } from '../components/user-profile/user-profile.component';
+import { InfoComponent } from '../components/info/info.component';
 
 export const COMPONENTS=[
     LayoutComponent,
@@ -26,7 +27,8 @@ export const COMPONENTS=[
     CarSearchComponent,
     AddCarFormComponent,
     CustomSwithcherComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    InfoComponent
     
     ]
 

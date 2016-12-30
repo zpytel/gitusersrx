@@ -16,7 +16,8 @@ export const routes: Routes = [
   },
   {
    path:'cars',
-   component:TestControlsComponent
+   component:TestControlsComponent,
+   canActivate:[AuthenticateGuard]
    
   },
   {
