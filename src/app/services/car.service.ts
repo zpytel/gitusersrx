@@ -32,14 +32,18 @@ export class CarService{
     }
 
     private sarch(index:string,type:string,searchTerm:string):Observable<any>{
-        var reqRef=this.fb.database.list(PATH+"/request");
-        var keyval=reqRef.push({index:index,type:type,q:searchTerm}).key;
-        return this.fb.database.list(PATH+"/response/"+ keyval).map(hit=>{
-            hit.reduce((pre:Car[],curr:any)=>{
-              return Object.assign(pre,{id:-1,make:curr._source.make,model:curr._source.model})
-            },[])
-        })
-      
+        debugger;
+        
+        var resRef=this.fb.database.object(PATH)
+        
+        
+        var keyval=this.fb.database.list(PATH+"/request").push({index:index,type:type,q:searchTerm}).key;
+        const val= this.fb.database.list(PATH+"/response/"+ keyval +"/hits")
+         //this.fb.database.object(PATH+"/response/"+ keyval).remove().then(a=>console.log("revoved"))
+        resRef.remove().then(a=>console.log("deleted"),err=>console.log(err));
+        //console.log(val)
+       
+        return val;
     }
    
 }

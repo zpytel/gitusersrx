@@ -17,7 +17,7 @@ export class SearchAction implements Action{
 }
 export class SearchCompleteAction implements Action{
     type=ActionTypes.SEARCH_COMPLETE;
-    constructor(public payload:Car[]){
+    constructor(public payload:any[]){
 
     }
 }

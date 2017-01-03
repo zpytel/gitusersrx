@@ -30,9 +30,10 @@ switch(action.type){
     }
     case(search.ActionTypes.SEARCH_COMPLETE):{
      const cars=action.payload;
-
+     const newcar=cars.map(car=>car._source.id)
+     
         return {
-            ids:cars.map(car=>car.id),
+            ids:[...newcar],
             loading:false,
             query:state.query
         }

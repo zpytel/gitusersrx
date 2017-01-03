@@ -18,6 +18,15 @@
           </td>
         </tr>
         <tr>
+          <td>
+            <md-select placeholder="Favorite food" formControlName="food">
+              <md-option *ngFor="let food of foods" [value]="food.value">
+              {{ food.viewValue }}
+            </md-option>
+            </md-select>
+          </td>
+          </tr>
+        <tr>
           <td formGroupName="account">
             <table><tr><td>
             <md-input placeholder="user name *" formControlName="user"></md-input></td></tr><tr><td>

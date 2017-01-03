@@ -1,4 +1,17 @@
+<md-grid-list cols="3" rowHeight="500px">
+ <md-grid-tile [colspan]=1 [rowspan]=1  [style.background]="lightblue">
+ 
 <app-car-search [query]="searchQuery$ | async" [searching]="loading$ | async" (search)="search($event)"></app-car-search>
+
+
+</md-grid-tile>
+<md-grid-tile [colspan]=1 [rowspan]=1>
 <app-dropdown [items]="carlist|async" [valueselected]="selectedItem|async" (selected)="selectedCar($event)" *ngIf="(carlist|async).length>0">
 </app-dropdown>
+</md-grid-tile>
+ <md-grid-tile [colspan]=1 [rowspan]=1 [style.background]="lightgreen">
 <app-car-detail [car]="selecteCar|async"></app-car-detail>
+ </md-grid-tile>
+
+
+</md-grid-list>

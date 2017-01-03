@@ -3,4 +3,9 @@
  <p>Email:{{user.profile.email}}</p>
  <p>Nickname:{{user.profile.nick}}</p>
  <p><img src="{{user.profile.image}}"/></p>
+ <md-select placeholder="Favorite food">
+  <md-option *ngFor="let food of foods" [value]="food.value">
+    {{ food.viewValue }}
+  </md-option>
+</md-select>
 </md-card>

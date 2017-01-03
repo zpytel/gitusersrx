@@ -11,11 +11,17 @@ function passwordMatcher(c:AbstractControl){
   styleUrls: ['./add-car-form.component.css']
 })
 export class AddCarFormComponent implements OnInit {
+  foods = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
   form:FormGroup;
   constructor(public fb:FormBuilder) { 
    this.form=this.fb.group({
     mark:'',
     model:'',
+    food:'tacos-2',
     account:this.fb.group({
       user:['',Validators.required],
       pass:['',Validators.required],

@@ -16,6 +16,8 @@ import * as fromRoot from '../../reducers';
 })
 export class UserProfileComponent implements OnInit {
   user:Observable<User>;
+
+ 
   constructor(private store:Store<fromRoot.State>) { }
 
   ngOnInit() {
