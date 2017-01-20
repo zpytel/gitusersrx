@@ -32,6 +32,7 @@ export class Auth {
       this.photoUrl = authState.auth.photoURL;
       this.email=authState.auth.email;
       this.isAuthenticated = true;
+      console.log(authState)
       if(authState.google){
         localStorage.setItem('idToken', (authState.google as any).idToken);
         localStorage.setItem('accessToken', (authState.google as any).accessToken);

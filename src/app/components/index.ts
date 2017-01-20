@@ -16,7 +16,10 @@ import { AddCarFormComponent } from '../components/add-car-form/add-car-form.com
 import { CustomSwithcherComponent } from '../controls/custom-swithcher/custom-swithcher.component';
 import { UserProfileComponent } from '../components/user-profile/user-profile.component';
 import { InfoComponent } from '../components/info/info.component';
-
+import { SearchComponent } from '../components/search/search.component';
+import { TabGroupComponent } from '../components/tab-group/tab-group.component';
+import { TabComponent } from '../components/tab/tab.component';
+import { TabTemplateComponent } from '../components/tab-template/tab-template.component';
 export const COMPONENTS=[
     LayoutComponent,
     NavItemComponent,
@@ -28,8 +31,11 @@ export const COMPONENTS=[
     AddCarFormComponent,
     CustomSwithcherComponent,
     UserProfileComponent,
-    InfoComponent
-    
+    InfoComponent,
+    SearchComponent,
+    TabGroupComponent,
+    TabComponent,
+    TabTemplateComponent
     ]
 
 @NgModule({

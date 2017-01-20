@@ -11,12 +11,14 @@ import { combineReducers } from '@ngrx/store';
 
 
 import * as fromLayout from './layout.reducer';
+import * as fromTabLayout from './tablayout.reducer';
 import * as fromCar from './car.reducer';
 import * as fromSearch from './search.reducer';
 import * as fromLogon from './logon.reducer';
 
 export interface State{
     layout:fromLayout.State,
+    tablayout:fromTabLayout.State,
     router:fromRouter.RouterState,
     car:fromCar.State,
     search:fromSearch.State,
@@ -25,6 +27,7 @@ export interface State{
 
 const reducers={
  layout:fromLayout.reducer,
+ tablayout:fromTabLayout.reducer,
  router:fromRouter.routerReducer,
  car:fromCar.reducer,
  search:fromSearch.reducer,
@@ -45,6 +48,9 @@ export function reducer(state: any, action: any) {
 
 export const getLayoutState=(state:State)=>state.layout;
 export const getShowSidenav=createSelector(getLayoutState,fromLayout.getShowSidenav)
+
+export const getTabLayoutState=(state:State)=>state.tablayout;
+export const getTabLayoutIndex=createSelector(getTabLayoutState,fromTabLayout.getTabIndex);
 
 export const getLogonState=(state:State)=>state.logon;
 export const getAuthenticated=createSelector(getLogonState,fromLogon.getAuthenticated);

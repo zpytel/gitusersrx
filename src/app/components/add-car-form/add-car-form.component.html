@@ -19,7 +19,7 @@
         </tr>
         <tr>
           <td>
-            <md-select placeholder="Favorite food" formControlName="food">
+            <md-select placeholder="Favorite food" formControlName="food" panelOpen="true">
               <md-option *ngFor="let food of foods" [value]="food.value">
               {{ food.viewValue }}
             </md-option>
@@ -43,7 +43,7 @@
 
         <tr>
           <td>
-           <button md-raised-button color="primary" [disabled]="!form.valid"> <i class="material-icons app-input-icon">check</i></button>
+           <button md-raised-button color="primary" (click)="clickButton()" [disabled]="!form.valid"> <i class="material-icons app-input-icon">check</i></button>
           </td>
         </tr>
       </table>
@@ -55,7 +55,8 @@
   </md-card-footer>
 </md-card>
 <md-card>
- <p>Form:{{form.value | json}}</p>
+ 
+ <p>Form:{{form.value.food | json}}</p>
  <p>Form status:{{form.status }}</p>
  <p>Account erors:{{form.get('account').errors | json}}</p>
 </md-card>

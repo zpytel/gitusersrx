@@ -1,11 +1,10 @@
 :host {
       display: flex;
       justify-content: center;
-      margin: 75px 0;
+      margin: 10px 0;
     }
-
 md-card {
-      width: 400px;
+      width: 600px;
       
       margin: 5px;
     }

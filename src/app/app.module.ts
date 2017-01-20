@@ -32,6 +32,8 @@ import {CarService} from './services/car.service'
 import {Auth} from './services/auth.service'
 
 import { ComponentsModule } from './components';
+import { SearchPageComponent } from './containers/search-page/search-page.component';
+
 
 
 
@@ -49,7 +51,8 @@ import { ComponentsModule } from './components';
     NotFoundPageComponent,
     SelectUserPageComponent,
     TestControlsComponent,
-    FormPageComponent
+    FormPageComponent,
+    SearchPageComponent
     
    
     
