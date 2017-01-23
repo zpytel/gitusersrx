@@ -2,7 +2,7 @@ import {Action} from '@ngrx/store';
 import {type} from '../utils/util';
 
 export const ActionTypes={
-    TAB_INDEX: type('[tab] Tab Diseas')
+    TAB_INDEX: type('[tab] Tab Index Changed')
 }
 
 export class SelectIndexTabAction implements Action{

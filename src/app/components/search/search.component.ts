@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit,EventEmitter,Input,Output } from '@angular/core';
+import {MdTabChangeEvent} from '@angular/material'
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -8,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent implements OnInit {
 
   constructor() { }
-
+  @Input()selectedIndex:number;
+  @Output()tabChanged=new EventEmitter<number>();
   ngOnInit() {
   }
-  getIndex(item){
-    console.log(item.index);
+  getIndex(item:MdTabChangeEvent){
+    this.tabChanged.emit(item.index);
+   
    
   }
 }

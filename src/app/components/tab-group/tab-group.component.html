@@ -1,3 +1,4 @@
-<p>
-  tab-group works!
-</p>
+<md-tab-group [selectedIndex]="indexNum" (selectChange)="getIndex($event)">
+
+<ng-content></ng-content>
+</md-tab-group>

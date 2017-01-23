@@ -1,7 +1,5 @@
-<md-card>
-      
-    <md-card-content>
-      <md-tab-group [selectedIndex]="1" (selectChange)="getIndex($event)">
+
+      <md-tab-group [selectedIndex]="selectedIndex" (selectChange)="getIndex($event)">
       <md-tab label="Search By Diseas">
             <p><md-input placeholder="search diseas *" name="seachdiseas"></md-input></p>
       </md-tab>
@@ -10,5 +8,4 @@
         <p><md-input placeholder="search keyword *" name="seachkeyword"></md-input></p>
       </md-tab>
     </md-tab-group>
-    </md-card-content>
-</md-card>
+    
