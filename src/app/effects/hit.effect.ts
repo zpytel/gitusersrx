@@ -17,7 +17,7 @@ import * as hitactions from '../actions/hits.action';
 import {Hit,Hits} from '../models/hits'
 
 @Injectable()
-export class CarEffects{
+export class HitEffects{
     index:string;
     type:string;
     constructor(private actions$:Actions,private service:HitService){
@@ -28,7 +28,7 @@ export class CarEffects{
 @Effect()
   search$:Observable<Action>=this.actions$
   .ofType(hitactions.ActionTypes.HIT_LOAD)
-  .debounceTime(300)
+  .debounceTime(500)
   .map((action:hitactions.HitLoad)=>action.payload)
   .switchMap(querry=>{
    if(querry===''){
@@ -38,7 +38,7 @@ export class CarEffects{
   
    return this.service.searchHits(this.index,this.type,querry)
    .takeUntil(nextSearch$)
-   .map(hits=>new hitactions.HitLoadSuccess(hits))
+   .map(hits=> new hitactions.HitLoadSuccess(hits))
    .catch(()=>of(new hitactions.HitLoadFailed({})));
 
   })

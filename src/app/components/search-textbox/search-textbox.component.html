@@ -1,0 +1,11 @@
+<md-grid-list cols="2" rowHeight="60px">
+  <md-grid-tile>
+      <md-input placeholder="{{placeholder}}" [value]="query" (keyup)="search.emit($event.target.value)"></md-input>
+  </md-grid-tile>
+  <md-grid-tile>
+      <md-spinner [class.show]="searching"></md-spinner>
+  </md-grid-tile>
+</md-grid-list>
+
+
+

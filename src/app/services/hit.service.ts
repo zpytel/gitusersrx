@@ -12,7 +12,7 @@ const PATH="search";
 export class HitService{
     constructor(private fb:AngularFire){}
     searchHits(index:string,type:string,search:string):Observable<Hits>{
-    console.log("in serchdisease()")
+    console.log("in serchdisease() " + search)
     return this.sarch(index,type,search+"*")
       
     }
@@ -21,7 +21,7 @@ export class HitService{
     private sarch(index:string,type:string,searchTerm:string):Observable<any>{
         var resRef=this.fb.database.object(PATH)
         var keyval=this.fb.database.list(PATH+"/request").push({index:index,type:type,q:searchTerm}).key;
-        const val= this.fb.database.list(PATH+"/response/"+ keyval)
+        const val= this.fb.database.list(PATH+"/response/"+ keyval +"/hits")
         //this.fb.database.object(PATH+"/response/"+ keyval).remove().then(a=>console.log("revoved"))
         resRef.remove().then(a=>console.log("deleted"),err=>console.log(err));
         //console.log(val)

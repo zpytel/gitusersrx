@@ -15,6 +15,7 @@ import {AngularFireModule,AuthProviders,AuthMethods} from 'angularfire2';
 import {firebaseConfig,firebaseAuthConfig} from './utils/firebase.config';
 
 import { CarEffects } from './effects/car.effect';
+import {HitEffects} from './effects/hit.effect';
 import {SearchEffect} from './effects/search.effect';
 import { AppComponent } from './containers/app/app.component';
 import {UserProfileComponent } from './containers/user-profile-page/user-profile.component';
@@ -28,17 +29,13 @@ import {routes} from './routes'
 import {reducer} from './reducers'
 import {UserExistsGuard} from './guards/user-exist.guard';
 import {AuthenticateGuard} from './guards/authenticate.guard'
+
 import {CarService} from './services/car.service'
+import {HitService} from './services/hit.service'
 import {Auth} from './services/auth.service'
 
 import { ComponentsModule } from './components';
 import { SearchPageComponent } from './containers/search-page/search-page.component';
-
-
-
-
-
-
 
 
 
@@ -70,6 +67,7 @@ import { SearchPageComponent } from './containers/search-page/search-page.compon
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(CarEffects),
     EffectsModule.run(SearchEffect),
+    EffectsModule.run(HitEffects),
     AngularFireModule.initializeApp(firebaseConfig,firebaseAuthConfig)
 
   ],
@@ -77,6 +75,7 @@ import { SearchPageComponent } from './containers/search-page/search-page.compon
    UserExistsGuard
   ,AuthenticateGuard
   ,CarService
+   ,HitService
   ,AUTH_PROVIDERS
   ,Auth],
   bootstrap: [AppComponent]

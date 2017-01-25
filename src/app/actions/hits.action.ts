@@ -26,7 +26,7 @@ export class HitLoad implements Action{
 }
 export class HitLoadSuccess implements Action{
     type=ActionTypes.HIT_LOAD_SUCCESS;
-    constructor(public payload:Hits){
+    constructor(public payload:any){
      
     }
 }

@@ -15,6 +15,7 @@ import * as fromTabLayout from './tablayout.reducer';
 import * as fromCar from './car.reducer';
 import * as fromSearch from './search.reducer';
 import * as fromLogon from './logon.reducer';
+import * as fromHitSearch from './hit.reducer';
 
 export interface State{
     layout:fromLayout.State,
@@ -22,7 +23,8 @@ export interface State{
     router:fromRouter.RouterState,
     car:fromCar.State,
     search:fromSearch.State,
-    logon:fromLogon.State
+    logon:fromLogon.State,
+    hitsearch:fromHitSearch.State
 }
 
 const reducers={
@@ -31,7 +33,8 @@ const reducers={
  router:fromRouter.routerReducer,
  car:fromCar.reducer,
  search:fromSearch.reducer,
- logon:fromLogon.reducer
+ logon:fromLogon.reducer,
+ hitsearch:fromHitSearch.reducer
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -58,7 +61,8 @@ export const getProfile=createSelector(getLogonState,fromLogon.getProfile);
 
 
 export const getCarState=(state:State)=>state.car;
-export const getSearchState=(state:State)=>state.search
+export const getSearchState=(state:State)=>state.search;
+export const getHitSearchState=(state:State)=>state.hitsearch;
 
 export const getCarEntities=createSelector(getCarState,fromCar.getCarsEntities)
 export const getCarIds=createSelector(getCarState,fromCar.getCarsIds)
@@ -69,7 +73,10 @@ export const getSearchCarIds=createSelector(getSearchState,fromSearch.getIds)
 export const getSearchLoaded=createSelector(getSearchState,fromSearch.getLoading);
 export const getSearchQuery=createSelector(getSearchState,fromSearch.getQuery)
 
-
+//generic search 
+export const getHitSerchedValues=createSelector(getHitSearchState,fromHitSearch.getHits)
+export const getHitSearchLoaded=createSelector(getHitSearchState,fromHitSearch.getHitLoading);
+export const getHitSearchQuery=createSelector(getHitSearchState,fromHitSearch.getHitQuery);
 
 export const getSearchCarsResult=createSelector(getCarEntities,getSearchCarIds,(entities,ids)=>{
  return ids.map(id=>entities[id])

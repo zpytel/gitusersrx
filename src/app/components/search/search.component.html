@@ -1,7 +1,10 @@
 
       <md-tab-group [selectedIndex]="selectedIndex" (selectChange)="getIndex($event)">
       <md-tab label="Search By Diseas">
-            <p><md-input placeholder="search diseas *" name="seachdiseas"></md-input></p>
+            <p>
+            <app-search-textbox [placeholder]="placeholder" [query]="query" [searching]="searching" (search)="getSearch($event)"></app-search-textbox>
+            
+            </p>
       </md-tab>
       <md-tab label="Search By keyword">
         

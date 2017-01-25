@@ -32,11 +32,8 @@ export class CarService{
     }
 
     private sarch(index:string,type:string,searchTerm:string):Observable<any>{
-        debugger;
-        
+          
         var resRef=this.fb.database.object(PATH)
-        
-        
         var keyval=this.fb.database.list(PATH+"/request").push({index:index,type:type,q:searchTerm}).key;
         const val= this.fb.database.list(PATH+"/response/"+ keyval +"/hits")
          //this.fb.database.object(PATH+"/response/"+ keyval).remove().then(a=>console.log("revoved"))

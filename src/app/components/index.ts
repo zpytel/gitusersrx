@@ -20,6 +20,9 @@ import { SearchComponent } from '../components/search/search.component';
 import { TabGroupComponent } from '../components/tab-group/tab-group.component';
 import { TabComponent } from '../components/tab/tab.component';
 import { TabTemplateComponent } from '../components/tab-template/tab-template.component';
+import { SearchTextboxComponent } from '../components/search-textbox/search-textbox.component';
+
+
 export const COMPONENTS=[
     LayoutComponent,
     NavItemComponent,
@@ -35,7 +38,8 @@ export const COMPONENTS=[
     SearchComponent,
     TabGroupComponent,
     TabComponent,
-    TabTemplateComponent
+    TabTemplateComponent,
+    SearchTextboxComponent
     ]
 
 @NgModule({
