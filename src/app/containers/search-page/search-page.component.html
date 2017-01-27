@@ -6,12 +6,8 @@
  (search)="getSearch($event)" [query]="searchQuery$ | async" [searching]="loading$ | async"
   ></app-search>
 
-  <md-radio-group class="example-radio-group">
-  <md-radio-button class="example-radio-button" *ngFor="let item of hitlist$ |async" [value]="item.id">
-     {{item.source.text}} 
-  </md-radio-button>
-</md-radio-group>
-
+  
+<app-list-items (getId)="getValue($event)" [hitlist]="hitlist$ | async"></app-list-items>
 
 </md-card-content>
 </md-card>

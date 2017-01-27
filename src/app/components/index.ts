@@ -21,6 +21,8 @@ import { TabGroupComponent } from '../components/tab-group/tab-group.component';
 import { TabComponent } from '../components/tab/tab.component';
 import { TabTemplateComponent } from '../components/tab-template/tab-template.component';
 import { SearchTextboxComponent } from '../components/search-textbox/search-textbox.component';
+import { ListItemsComponent } from '../components/list-items/list-items.component';
+import { TruncatePipe } from '../pipes/truncate.pipe';
 
 
 export const COMPONENTS=[
@@ -39,7 +41,9 @@ export const COMPONENTS=[
     TabGroupComponent,
     TabComponent,
     TabTemplateComponent,
-    SearchTextboxComponent
+    SearchTextboxComponent,
+    ListItemsComponent,
+    TruncatePipe
     ]
 
 @NgModule({

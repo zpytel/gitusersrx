@@ -40,6 +40,9 @@ export class SearchPageComponent implements OnInit {
     this.store.dispatch(new tablayout.SelectIndexTabAction(event))
     
   }
+  getValue(value){
+    console.log(value)
+  }
   getSearch(query:string){
    this.store.dispatch(new search.HitLoad(query));
    console.log(query)

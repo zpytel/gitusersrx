@@ -39,6 +39,8 @@ import { SearchPageComponent } from './containers/search-page/search-page.compon
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,7 @@ import { SearchPageComponent } from './containers/search-page/search-page.compon
     TestControlsComponent,
     FormPageComponent,
     SearchPageComponent
+    
     
    
     
