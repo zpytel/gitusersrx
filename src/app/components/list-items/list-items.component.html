@@ -1,6 +1,7 @@
 <md-radio-group class="example-radio-group" (change)="getValue($event)">
-  <md-radio-button class="example-radio-button" *ngFor="let item of hitlist" [value]="item.id"  >
-    <div mdTooltip="{{item.source.text}}" [mdTooltipPosition]="'above'" *ngIf="item.source.text.length>=36"> {{item.source.text | truncate: 36 }} </div>
-    <div  *ngIf="item.source.text.length<35"> {{item.source.text }} </div>
+ <md-radio-button class="example-radio-button" *ngFor="let item of hitlist" [value]="item.$key"  >
+    <div mdTooltip="{{item.text}}" [mdTooltipPosition]="'above'" *ngIf="item.text.length>=36"> {{item.text | truncate: 36 }} </div>
+    <div  *ngIf="item.text.length<35"> {{item.text }} </div>
   </md-radio-button>
+ 
 </md-radio-group>

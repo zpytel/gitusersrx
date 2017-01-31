@@ -46,11 +46,11 @@ switch(action.type){
         }
         case hitaction.ActionTypes.HIT_LOAD_SUCCESS:{
             const hits:any=action.payload.map(item=>{return {id:item._id,score:item._score,source:item._source}});
-           
+            const newhits=action.payload;
             return {
               loading:false,
               query:state.query,
-              hits:[...hits],
+              hits:[...newhits],
               selectedHit:state.selectedHit
           }
         }

@@ -3,6 +3,7 @@ import{Observable} from 'rxjs/Observable';
 import{Store} from '@ngrx/store'
 import 'rxjs/add/operator/let';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/toPromise';
 
 import {Hit,Hits} from '../../models/hits'
 
@@ -20,8 +21,10 @@ import * as tablayout from '../../actions/tablayout';
 })
 export class SearchPageComponent implements OnInit {
   $index:Observable<number>;
-
+  hitlist:Hit[];
+  
   hitlist$:Observable<Hit[]>
+  
   selectedItem:Observable<number>;
  
 
@@ -31,14 +34,20 @@ export class SearchPageComponent implements OnInit {
   constructor(private store:Store<fromRoot.State>) { }
 
   ngOnInit() {
-  this.hitlist$=this.store.select(fromRoot.getHitSerchedValues);
+ this.hitlist$=this.store.select(fromRoot.getHitSerchedValues);
+ //.subscribe(val=>this.hitlist=val)
   this.$index=this.store.select(fromRoot.getTabLayoutIndex);
   this.searchQuery$ = this.store.select(fromRoot.getHitSearchQuery).take(1);
   this.loading$ = this.store.select(fromRoot.getHitSearchLoaded);
+  
+  
   }
   getindex(event:number){
     this.store.dispatch(new tablayout.SelectIndexTabAction(event))
     
+  }
+  unsubscribe(){
+   console.log("unsubscribe")
   }
   getValue(value){
     console.log(value)
