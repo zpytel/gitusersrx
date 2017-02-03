@@ -14,7 +14,7 @@ import { of } from 'rxjs/observable/of';
 
 import {HitService} from '../services/hit.service';
 import * as hitactions from '../actions/hits.action';
-import {Hit,Hits} from '../models/hits'
+import {Hit,Hits,Load} from '../models/hits'
 
 @Injectable()
 export class HitEffects{
@@ -30,13 +30,13 @@ export class HitEffects{
   .ofType(hitactions.ActionTypes.HIT_LOAD)
   .debounceTime(500)
   .map((action:hitactions.HitLoad)=>action.payload)
-  .switchMap(querry=>{
-   if(querry===''){
+  .switchMap(val=>{
+   if(val.search===''){
        return empty();
    }
    const nextSearch$=this.actions$.ofType(hitactions.ActionTypes.HIT_LOAD).skip(1);
   
-   return this.service.searchHits(this.index,this.type,querry)
+   return this.service.searchHits(this.index,this.type,val)
    .takeUntil(nextSearch$)
    .map(hits=> new hitactions.HitLoadSuccess(hits))
    .catch(()=>of(new hitactions.HitLoadFailed({})));

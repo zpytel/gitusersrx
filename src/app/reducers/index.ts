@@ -77,6 +77,7 @@ export const getSearchQuery=createSelector(getSearchState,fromSearch.getQuery)
 export const getHitSerchedValues=createSelector(getHitSearchState,fromHitSearch.getHits)
 export const getHitSearchLoaded=createSelector(getHitSearchState,fromHitSearch.getHitLoading);
 export const getHitSearchQuery=createSelector(getHitSearchState,fromHitSearch.getHitQuery);
+export const getRecordsPerPage=createSelector(getHitSearchState,fromHitSearch.getRecordsPerPage)
 
 export const getSearchCarsResult=createSelector(getCarEntities,getSearchCarIds,(entities,ids)=>{
  return ids.map(id=>entities[id])

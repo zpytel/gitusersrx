@@ -2,37 +2,46 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import {Subject} from 'rxjs/Subject';
+import { empty } from 'rxjs/observable/empty';
 import {Observable} from 'rxjs/Observable';
 import {AngularFire} from 'angularfire2';
 
 
 
 
-import {Hit,Hits} from '../models/hits'
+import {Hit,Hits,Load} from '../models/hits'
 const PATH="search";
 const DISEASES="diseases"
 @Injectable()
 export class HitService{
     constructor(private fb:AngularFire){}
 
-    searchHits(index:string,type:string,search:string):Observable<Hits>{
-    console.log("in serchdisease() " + search)
+    searchHits(index:string,type:string,val:Load):Observable<Hits>{
+    console.log("in serchdisease() " + val.search)
+    console.log(val.records)
     //return this.sarch(index,type,search+"*")
-      return this.searchDiseases(search)
+      return this.searchDiseases(val.search,val.records)
     }
-    searchDiseases(search:string):Observable<any>{
-        var s= search.charAt(0).toUpperCase() + search.slice(1).toLowerCase();
+    searchDiseases(search:string,records:number):Observable<any>{
+        var s:string;
+        if(search != null)
+        {
+         s= search.charAt(0).toUpperCase() + search.slice(1).toLowerCase();
+        }
+        
         return this.fb.database.list(DISEASES,{
             query:{
-                limitToFirst:10,
+                limitToFirst:records,
                 orderByChild:'text',
                 startAt:s,
-                endAt:search + 'z'
+                endAt:search + "\uf8ff"
                 
 
             
             }
         })
+       
     }
   
     /*

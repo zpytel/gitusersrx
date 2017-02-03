@@ -5,7 +5,8 @@ import 'rxjs/add/operator/let';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/toPromise';
 
-import {Hit,Hits} from '../../models/hits'
+
+import {Hit,Hits,Load} from '../../models/hits'
 
 import * as search from '../../actions/hits.action'
 
@@ -27,19 +28,23 @@ export class SearchPageComponent implements OnInit {
   
   selectedItem:Observable<number>;
  
-
-  searchQuery$: Observable<string>;
+  query:string;
+  records:number;
+  
+  //searchQuery$: Observable<string>;
   loading$: Observable<boolean>;
-
+   
   constructor(private store:Store<fromRoot.State>) { }
 
-  ngOnInit() {
+ngOnInit() {
+ this.store.select(fromRoot.getRecordsPerPage).subscribe(val=>this.records=val)
  this.hitlist$=this.store.select(fromRoot.getHitSerchedValues);
  //.subscribe(val=>this.hitlist=val)
   this.$index=this.store.select(fromRoot.getTabLayoutIndex);
-  this.searchQuery$ = this.store.select(fromRoot.getHitSearchQuery).take(1);
+ // this.searchQuery$ = this.store.select(fromRoot.getHitSearchQuery).take(1);
+  this.store.select(fromRoot.getHitSearchQuery).take(1).subscribe(val=>this.query=val)
   this.loading$ = this.store.select(fromRoot.getHitSearchLoaded);
-  
+ 
   
   }
   getindex(event:number){
@@ -49,11 +54,19 @@ export class SearchPageComponent implements OnInit {
   unsubscribe(){
    console.log("unsubscribe")
   }
+  getRecords(value){
+    this.records=parseInt(value)
+    if(this.query!=null){
+      
+    this.store.dispatch(new search.HitLoad({search:this.query,records:value}));
+    }
+  }
   getValue(value){
     console.log(value)
   }
   getSearch(query:string){
-   this.store.dispatch(new search.HitLoad(query));
-   console.log(query)
+  this.query=query;
+   this.store.dispatch(new search.HitLoad({search:query,records:this.records}));
+   
   }
 }

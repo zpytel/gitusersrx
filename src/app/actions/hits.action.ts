@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {type} from '../utils/util';
-import {Hits,Hit} from '../models/hits'
+import {Hits,Hit,Load} from '../models/hits'
 
 
 export const ActionTypes={
@@ -20,7 +20,7 @@ export class HitSelected implements Action{
 
 export class HitLoad implements Action{
     type=ActionTypes.HIT_LOAD;
-    constructor(public payload:string){
+    constructor(public payload:Load){
 
     }
 }

@@ -1,9 +1,9 @@
 import {createSelector} from 'reselect'
 import * as hitaction from '../actions/hits.action'
-import {Hits,Hit} from '../models/hits'
+import {Hits,Hit,Load} from '../models/hits'
 
 export interface State{
-   
+    pagenumber:number,
     loading:boolean,
     query:string,
     hits:Hit[];
@@ -11,6 +11,7 @@ export interface State{
 }
 
 const initState={
+    pagenumber:10,
     loading:false,
     query:"",
     hits:[],
@@ -20,10 +21,11 @@ const initState={
 export function reducer(state=initState,action:hitaction.Actions):State{
 switch(action.type){
         case hitaction.ActionTypes.HIT_LOAD:{
-            const query:string=action.payload;
-            if(query===''){
+            const val:Load=action.payload;
+            console.log("HIT_LOAD " + val.records)
+            if(val.search===''){
                 return{
-             
+              pagenumber:val.records,
               loading:false,
               query:state.query,
               hits:[],
@@ -32,12 +34,13 @@ switch(action.type){
             
             }
             
-            return Object.assign({},state,{query:query,loading:true})
+            return Object.assign({},state,{query:val.search,loading:true,pagenumber:val.records})
         }
         case hitaction.ActionTypes.HIT_SELECTED:{
           const hitselcted:Hit=action.payload;
+          
           return {
-            
+              pagenumber:state.pagenumber,
               loading:state.loading,
               query:state.query,
               hits:[...state.hits],
@@ -48,6 +51,7 @@ switch(action.type){
             const hits:any=action.payload.map(item=>{return {id:item._id,score:item._score,source:item._source}});
             const newhits=action.payload;
             return {
+              pagenumber:state.pagenumber,
               loading:false,
               query:state.query,
               hits:[...newhits],
@@ -69,3 +73,4 @@ switch(action.type){
 export const getHits=(state:State)=>state.hits;
 export const getHitQuery=(state:State)=>state.query;
 export const getHitLoading=(state:State)=>state.loading;
+export const getRecordsPerPage=(state:State)=>state.pagenumber;

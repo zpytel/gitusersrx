@@ -3,8 +3,13 @@
       <md-tab label="Search By Diseas">
             <p>
             <app-search-textbox [placeholder]="placeholder" [query]="query" [searching]="searching" (search)="getSearch($event)"></app-search-textbox>
-            
-            </p>
+             &nbsp;&nbsp;
+             <md-radio-group class="example-radio-group" (change)="getRecord($event)" [align]='before'>
+                  <md-radio-button class="example-radio-button" *ngFor="let item of recperpage"  [value]="item.value" [checked]="item.selected"   >
+                   {{item.value}}
+                  </md-radio-button>
+              </md-radio-group> records
+           </p>
       </md-tab>
       <md-tab label="Search By keyword">
         
