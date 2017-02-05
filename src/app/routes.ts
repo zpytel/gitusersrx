@@ -9,6 +9,7 @@ import {AuthenticateGuard} from './guards/authenticate.guard'
 import {TestControlsComponent} from './containers/test-controls-page/test-controls.component';
 import { FormPageComponent } from './containers/form-page/form-page.component';
 import { SearchPageComponent } from './containers/search-page/search-page.component';
+import {DetailPageComponent} from './containers/detail-page/detail-page.component';
 export const routes: Routes = [
   {
     path: '',
@@ -43,6 +44,10 @@ export const routes: Routes = [
   {
     path:'search',
     component:SearchPageComponent
+  },
+  { 
+    path:'detail/:id',
+    component:DetailPageComponent
   },
   {
     path: '**',

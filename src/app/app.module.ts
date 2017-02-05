@@ -36,6 +36,7 @@ import {Auth} from './services/auth.service'
 
 import { ComponentsModule } from './components';
 import { SearchPageComponent } from './containers/search-page/search-page.component';
+import { DetailPageComponent } from './containers/detail-page/detail-page.component';
 
 
 
@@ -51,7 +52,8 @@ import { SearchPageComponent } from './containers/search-page/search-page.compon
     SelectUserPageComponent,
     TestControlsComponent,
     FormPageComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    DetailPageComponent
     
     
    

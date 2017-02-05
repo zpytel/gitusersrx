@@ -8,7 +8,7 @@
 
 <md-list class="app-list">
         <md-list-item *ngFor="let item of hitlist"  [class.selected]="false">
-           <div mdTooltip="{{item.text}}" [mdTooltipPosition]="'above'" *ngIf="item.text.length>=36"> {{item.text | truncate: 36 }} </div>
-           <div  *ngIf="item.text.length<35"> {{item.text }} </div>
+          <a [routerLink]="['/detail', item.$key]"> <div mdTooltip="{{item.text}}" [mdTooltipPosition]="'above'" *ngIf="item.text.length>=36"> {{item.text | truncate: 36 }} </div>
+           <div  *ngIf="item.text.length<35"> {{item.text }} </div></a>
         </md-list-item>
 </md-list>
